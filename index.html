@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myBlog">
+<html ng-app="engineHack">
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -8,7 +8,6 @@
 	<!-- CSS -->
 	<!----------------------------------------------------------------------------------------------->
     <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <!--<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" /> -->
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
 	<link rel="stylesheet" type="text/css" href="stylesheets/twitter_bs/bootstrap.min.css" />
@@ -17,6 +16,7 @@
 	<!-- JS -->
 	<!----------------------------------------------------------------------------------------------->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js" type="text/javascript"></script>
+	<script src="javascripts/engineHack/controllers.js"></script>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -40,38 +40,59 @@
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
 					<div class="panel-group" id="accordion">
-					  <div class="panel panel-default">
+					  <div class="panel panel-danger">
 						<div class="panel-heading">
 						  <h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+							<a data-toggle="collapse" data-parent="#accordion" href="#">
 							  <b>Everything in Between</b>
 							</a>
 						  </h4>
 						</div>
 						<div id="collapseOne" class="panel-collapse collapse in">
-							<div class="list-group">
-							  <a href="#" class="list-group-item active">Attending my First Hackathon</a>
-							  <a href="#" class="list-group-item">Keeping an Active Lifestyle</a>
-							  <a href="#" class="list-group-item">Keeping Focused</a>
-							  <a href="#" class="list-group-item">Preparing for a Technical Interview</a>
+							<div class="list-group" ng-controller="blogList">
+							  <a href="#" class="list-group-item" ng-repeat="blog in blogs">
+							  	<p>{{blog.name}}</p> <span style="color: #999;">{{blog.date}}</span>
+							  </a>	
 							</div>
 						</div>
-					  </div> <br />
-					  <div class="panel panel-default">
+					  </div> <br />					  
+					</div>
+					<div class="panel-group" id="accordion">
+					  <div class="panel panel-danger">
 						<div class="panel-heading">
 						  <h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+							<a data-toggle="collapse" data-parent="#accordion" href="#">
 							  <b>Software</b>
 							</a>
 						  </h4>
 						</div>
-						<div id="collapseTwo" class="panel-collapse collapse in">
-							<div class="list-group">
-							  <a href="#" class="list-group-item active">List group item heading</a>
+						<div id="collapseOne" class="panel-collapse collapse in">
+							<div class="list-group" ng-controller="softwareList">
+							  <a href="#" class="list-group-item" ng-repeat="sw in software">
+							  	<p>{{sw.name}}</p> <span style="color: #999;">{{sw.date}}</span>
+							  </a>	
 							</div>
 						</div>
-					  </div>					  
+					  </div> <br />					  
 					</div>
+					<div class="panel-group" id="accordion">
+					  <div class="panel panel-danger">
+						<div class="panel-heading">
+						  <h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#">
+							  <b>Resume</b>
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse in" ng-controller="resumeList">
+							<div class="list-group">
+							  <a href={{cv.link}} class="list-group-item" ng-repeat="cv in resume">
+							  	<p>{{cv.name}}</p> <span style="color: #999;">{{cv.date}}</span>
+							  </a>	
+							</div>
+						</div>
+					  </div> <br />					  
+					</div>										
 				</div>
 			</div>
 		</div>
