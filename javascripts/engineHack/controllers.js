@@ -10,17 +10,17 @@ var engineHackApp = angular.module ('engineHack', []);
 engineHackApp.controller ('blogList', function ($scope) {
 	$scope.blogs = [
 		{'name' : 'Attending My First Hacakthon',
-		 'date' : '28th June 2013',
-		 'link' : ''},
-		{'name' : 'Keeping an Active Lifestyle',
-		 'date' : '28th July 2013',
-		 'link' : ''},
+		 'date' : 'May 2013',
+		 'link' : 'blog/Attending-My-First-Hackathon.html'},
 		{'name' : 'Keeping Focused',
-		 'date' : '28th August 2013',
-		 'link' : ''},
+		 'date' : 'July 2013',
+		 'link' : 'blog/Keeping-Focused.html'},
 		{'name' : 'Preparing for a Technical Interview',
-		 'date' : '28th November 2013',
-		 'link' : ''},
+		 'date' : 'July 2013',
+		 'link' : 'blog/Preparing-for-a-Technical-Interview.html'},
+		{'name' : 'Keeping an Active Lifestyle',
+		 'date' : 'August 2013',
+		 'link' : 'blog/Having-an-Active-Lifestyle.html'},
 	];
 });
 
@@ -47,4 +47,16 @@ engineHackApp.controller ('resumeList', function ($scope) {
 		{'name' : 'Check out my personal CV',
 		 'link' : 'about/resume.html'}
 	];
+});
+
+
+engineHackApp.directive ('markdown', function () {
+	var converter = new Showdown.converter();
+	return {
+		restrict : 'C',
+		link : function (scope, element, attrs) {
+			var htmlText = converter.makeHtml (element.text());
+			element.html (htmlText);
+		}
+	};
 });

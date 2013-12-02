@@ -32,15 +32,15 @@
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
 					<div class="page-header">
-						<h1 style="text-align: center;">Engine Hack<br> 
-						<small>A few of my rants, thoughts, interests and everything kosher</small></h1>
+						<h2 style="text-align: center;">Engine Hack<br> 
+						<small>Software, Hardware, Embedded and Everything in Between</small></h2>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
 					<div class="panel-group" id="accordion">
-					  <div class="panel panel-danger">
+					  <div class="panel panel-primary">
 						<div class="panel-heading">
 						  <h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion" href="#">
@@ -50,7 +50,7 @@
 						</div>
 						<div id="collapseOne" class="panel-collapse collapse in">
 							<div class="list-group" ng-controller="blogList">
-							  <a href="#" class="list-group-item" ng-repeat="blog in blogs">
+							  <a href={{blog.link}} class="list-group-item" ng-repeat="blog in blogs">
 							  	<p>{{blog.name}}</p> <span style="color: #999;">{{blog.date}}</span>
 							  </a>	
 							</div>
@@ -58,7 +58,7 @@
 					  </div> <br />					  
 					</div>
 					<div class="panel-group" id="accordion">
-					  <div class="panel panel-danger">
+					  <div class="panel panel-primary">
 						<div class="panel-heading">
 						  <h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion" href="#">
@@ -76,7 +76,7 @@
 					  </div> <br />					  
 					</div>
 					<div class="panel-group" id="accordion">
-					  <div class="panel panel-danger">
+					  <div class="panel panel-primary">
 						<div class="panel-heading">
 						  <h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion" href="#">
@@ -86,7 +86,7 @@
 						</div>
 						<div id="collapseOne" class="panel-collapse collapse in" ng-controller="resumeList">
 							<div class="list-group">
-							  <a href={{cv.link}} class="list-group-item" ng-repeat="cv in resume">
+							  <a href={{cv.link}} class="list-group-item" ng-repeat="cv in resume">
 							  	<p>{{cv.name}}</p> <span style="color: #999;">{{cv.date}}</span>
 							  </a>	
 							</div>
