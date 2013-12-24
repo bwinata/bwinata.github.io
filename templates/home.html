@@ -1,0 +1,69 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="page-header">
+				<h2 style="text-align: center;">Engine Hack<br> 
+				<small>Software, Hardware, Embedded and Everything in Between</small></h2>
+
+			</div>
+		</div>
+	</div>
+	<div class="row" ng-controller="MainController">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel-group" id="accordion">
+			  <div class="panel panel-primary">
+				<div class="panel-heading">
+				  <h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#">
+					  <b>Everything in Between</b>
+					</a>
+				  </h4>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse in">
+					<div class="list-group">
+					  <a href={{blog.link}} class="list-group-item" ng-repeat="blog in blogs">
+					  	<p>{{ blog.name }}</p> <span style="color: #999;">{{ blog.date }}</span>
+					  </a>	
+					</div>
+				</div>
+			  </div> <br />					  
+			</div>
+			<div class="panel-group" id="accordion">
+			  <div class="panel panel-primary">
+				<div class="panel-heading">
+				  <h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#">
+					  <b>Software</b>
+					</a>
+				  </h4>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse in">
+					<div class="list-group">
+					  <a href={{sw.link}} class="list-group-item" ng-repeat="sw in software">
+					  	<p>{{sw.name}}</p> <span style="color: #999;">{{sw.date}}</span>
+					  </a>	
+					</div>
+				</div>
+			  </div> <br />					  
+			</div>
+			<div class="panel-group" id="accordion">
+			  <div class="panel panel-primary">
+				<div class="panel-heading">
+				  <h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#">
+					  <b>Resume</b>
+					</a>
+				  </h4>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse in">
+					<div class="list-group">
+					  <a href={{cv.link}} class="list-group-item" ng-repeat="cv in resume">
+					  	<p>{{cv.name}}</p> <span style="color: #999;">{{cv.date}}</span>
+					  </a>	
+					</div>
+				</div>
+			  </div> <br />					  
+			</div>										
+		</div>
+	</div>
+</div>
