@@ -1,14 +1,41 @@
-/* Define global module for site */
-var engineHackApp = angular.module ('engineHack', ['ngRoute', 'engineHackControllers']);
+/* AngularJS - Global Module */
+var engineHack = angular.module ('engineHack', []);
 
-engineHackApp.config([
-	'$routeProvider',
-	function ($routeProvider) {
-		$routeProvider.
-		when ('blog/:blogId', {
-			templateUrl : 'templates/blog.html',
-			controller	: 'Blog'
-		});
-	}
-	
-]);
+/* 
+ * ================================================
+ * Routes
+ * ================================================
+ */
+engineHack.config (['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+	$routeProvider.when ("/blog/:title",  {
+		templateUrl	: "templates/blog.html",
+		controller	: "BlogController"
+	});
+	$routeProvider.when ("/", {
+		templateUrl	: "templates/home.html",
+		controller 	: "MainController"
+	});
+	$routeProvider.when ("/about/resume", {
+		templateUrl	: "templates/resume.html"
+	});
+
+	$routeProvider.otherwise ({redirectTo : "/"});
+}]);
+
+/* 
+ * ================================================
+ * Directives
+ * ================================================
+ */
+engineHack.directive ('markdown', function () {
+	var converter = new Showdown.converter();
+	return {
+		restrict : 'C',
+		link : function (scope, element, attrs) {
+			$.get ("./" + scope.model.type + "/markdown/" + scope.model.title + ".md", function (data) {
+				var htmlText = converter.makeHtml (data);
+				element.html (htmlText);
+			});
+		}
+	};
+});
